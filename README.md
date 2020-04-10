@@ -12,7 +12,7 @@ This dataset contains locations and resources of Hospitals for 50 US states, Was
 
 ## More Information:
 - Source: [Homeland Infrastructure Foundation-Level Data (HIFLD) Open Data](https://hifld-geoplatform.opendata.arcgis.com)  
-- [Hospitals Dataset Homepage](https://pages.semanticscholar.org/coronavirus-research)    
+- [Hospitals Dataset Homepage](https://hifld-geoplatform.opendata.arcgis.com/datasets/hospitals)    
 - Frequency: Weekly
 
 ## Contact Information
