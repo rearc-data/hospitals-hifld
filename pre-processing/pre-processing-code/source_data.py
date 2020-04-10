@@ -15,4 +15,4 @@ def source_dataset(s3_bucket, new_s3_key):
     df.to_csv('/tmp/hospitals.csv', index=False)
 
     s3 = boto3.client('s3')
-    s3.upload_file('/tmp/hospitals.csv', s3_bucket, new_s3_key)
+    s3.upload_file('/tmp/hospitals.csv', s3_bucket, new_s3_key + 'hospitals.csv')
