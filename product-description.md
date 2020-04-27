@@ -1,7 +1,3 @@
-<a href="https://www.rearc.io/data/">
-    <img src="./rearc_logo_rgb.png" alt="Rearc Logo" title="Rearc Logo" height="52" />
-</a>
-
 # Hospitals Dataset | Homeland Infrastructure Foundation-Level Data (HIFLD)
 
 ## Main Description
@@ -10,7 +6,7 @@ This dataset contains locations and resources of Hospitals for 50 US states, Was
 
 The dataset only includes hospital facilities based on data acquired from various state departments or federal sources which has been referenced in the SOURCE field. Hospital facilities which do not occur in these sources will be not present in the database. The source data was available in a variety of formats (pdfs, tables, webpages, etc.) which was cleaned and geocoded and then converted into a spatial database. The database does not contain nursing homes or health centers. Hospitals have been categorized into children, chronic disease, critical access, general acute care, long term care, military, psychiatric, rehabilitation, special, and women based on the range of the available values from the various sources after removing similarities.
 
-If you are interested in subscribing to this product on AWS Data Exchange, please click [here](https://aws.amazon.com/marketplace/pp/prodview-pg52qkffii33s?ref_=srh_res_product_title).
+If you are interested in exploring this product on GitHub, please click [here](https://github.com/rearc-data/hospitals-hifld).
 
 ## Data Sources:
 
@@ -24,9 +20,8 @@ The included dataset features the following columns:
 - Frequency: Weekly
 - Format: GeoJSON, CSV
 
-
 ## Contact/Support Information
-- If you find any issues with or have enhancement ideas for this product, open up a GitHub [issue](https://github.com/rearc-data/hospitals-hifld/issues) and we will gladly take a look at it. Better yet, submit a pull request. Any contributions you make are greatly appreciated :heart:.
+- If you find any issues with or have enhancement ideas for this product, open up a GitHub [issue](https://github.com/rearc-data/hospitals-hifld/issues) and we will gladly take a look at it. Better yet, submit a pull request. Any contributions you make are greatly appreciated ♥.
 - If you are looking for specific open datasets currently not available on ADX, please submit a request on our project board [here](https://github.com/rearc-data/covid-datasets-aws-data-exchange/projects/1).
 - If you have questions about the source data, please contact HIFLD@hq.dhs.gov.
 - If you have any other questions or feedback, send us an email at data@rearc.io.

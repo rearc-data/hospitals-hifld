@@ -1,0 +1,1 @@
+This dataset contains locations and resources of Hospitals for 50 US states, Washington D.C., US territories of Puerto Rico, Guam, American Samoa, Northern Mariana Islands, Palau, and Virgin Islands.
