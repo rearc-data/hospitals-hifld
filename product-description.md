@@ -1,6 +1,6 @@
 # Hospitals Dataset | Homeland Infrastructure Foundation-Level Data (HIFLD)
 
-The source code outlining how this product gathers, transforms, revises and publishes its datasets is avaiable at [https://github.com/rearc-data/hospitals-hifld](https://github.com/rearc-data/hospitals-hifld).
+The source code outlining how this product gathers, transforms, revises and publishes its datasets is available at [https://github.com/rearc-data/hospitals-hifld](https://github.com/rearc-data/hospitals-hifld).
 
 ## Product Description
 This dataset contains locations and resources of Hospitals for 50 US states, Washington D.C., US territories of Puerto Rico, Guam, American Samoa, Northern Mariana Islands, Palau, and Virgin Islands.
