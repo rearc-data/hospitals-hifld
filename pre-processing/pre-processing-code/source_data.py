@@ -1,25 +1,59 @@
-import urllib.request
 import os
 import boto3
+from urllib.request import urlopen
+from urllib.error import URLError, HTTPError
+from multiprocessing.dummy import Pool
 
+def data_to_s3(frmt):
 
-def source_dataset(new_filename, s3_bucket, new_s3_key):
+	# throws error occured if there was a problem accessing data
+	# otherwise downloads and uploads to s3
 
 	source_dataset_url = 'https://opendata.arcgis.com/datasets/6ac5e325468c4cb9b905f1728d6fbf0f_0'
 
-	# Download the file from `url` and save it locally under `file_name`:
-	urllib.request.urlretrieve(
-		source_dataset_url + '.geojson', '/tmp/' + new_filename + '.geojson')
+	try:
+		response = urlopen(source_dataset_url + frmt)
 
-	urllib.request.urlretrieve(
-		source_dataset_url + '.csv', '/tmp/' + new_filename + '.csv')
+	except HTTPError as e:
+		raise Exception('HTTPError: ', e.code, frmt)
 
-	s3 = boto3.client('s3')
-	asset_list = []
+	except URLError as e:
+		raise Exception('URLError: ', e.reason, frmt)
 
-	for filename in os.listdir('/tmp'):
-		print(filename)
-		s3.upload_file('/tmp/' + filename, s3_bucket, new_s3_key + filename)
-		asset_list.append({'Bucket': s3_bucket, 'Key': new_s3_key + filename})
+	else:
+		data_set_name = os.environ['DATA_SET_NAME']
+		filename = data_set_name + frmt
+		file_location = '/tmp/' + filename
 
+		with open(file_location, 'wb') as f:
+			f.write(response.read())
+
+		# variables/resources used to upload to s3
+		s3_bucket = os.environ['S3_BUCKET']
+		new_s3_key = data_set_name + '/dataset/'
+		s3 = boto3.client('s3')
+
+		s3.upload_file(file_location, s3_bucket, new_s3_key + filename)			
+		
+		print('Uploaded: ' + filename)
+
+		# deletes to preserve limited space in aws lamdba
+		os.remove(file_location)
+
+		# dicts to be used to add assets to the dataset revision
+		return {'Bucket': s3_bucket, 'Key': new_s3_key + filename}
+
+def source_dataset():
+
+	# list of enpoints to be used to access data included with product
+	data_endpoints = [
+		'.geojson',
+		'.csv'
+	]
+
+	# multithreading speed up accessing data, making lambda run quicker
+	with (Pool(2)) as p:
+		asset_list = p.map(data_to_s3, data_endpoints)
+
+	# asset_list is returned to be used in lamdba_handler function
 	return asset_list
